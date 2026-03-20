@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Unlimited Free Telegram Downloader",
+  "version": "1.0",
+  "description": "An unlimited, totally free telegram media downloader.",
+  "action": {
+    "default_title": "Telegram Downloader"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": ["content.js"],
+      "matches": ["https://web.telegram.org/*"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": ["storage", "activeTab", "downloads"],
+  "host_permissions": [
+    "https://web.telegram.org/*",
+    "https://*.telegram.org/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["utils.js"],
+      "matches": ["*://*.telegram.org/*"]
+    }
+  ]
+}
